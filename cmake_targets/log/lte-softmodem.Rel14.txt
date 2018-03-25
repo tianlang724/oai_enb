@@ -1,0 +1,276 @@
+[  2%] Built target LFDS7
+Scanning dependencies of target ITTI
+[  2%] Building C object CMakeFiles/ITTI.dir/home/liu/openairinterface5g/common/utils/itti/intertask_interface.c.o
+[  2%] Building C object CMakeFiles/ITTI.dir/home/liu/openairinterface5g/common/utils/itti/intertask_interface_dump.c.o
+[  2%] Building C object CMakeFiles/ITTI.dir/home/liu/openairinterface5g/common/utils/itti/signals.c.o
+[  2%] Building C object CMakeFiles/ITTI.dir/home/liu/openairinterface5g/common/utils/itti/timer.c.o
+Linking C static library libITTI.a
+[  2%] Built target ITTI
+Scanning dependencies of target S1AP_LIB
+[  2%] Building C object CMakeFiles/S1AP_LIB.dir/CMakeFiles/R10.5/s1ap_decoder.c.o
+[  2%] Building C object CMakeFiles/S1AP_LIB.dir/CMakeFiles/R10.5/s1ap_encoder.c.o
+[  2%] Building C object CMakeFiles/S1AP_LIB.dir/CMakeFiles/R10.5/s1ap_xer_print.c.o
+[  2%] Building C object CMakeFiles/S1AP_LIB.dir/CMakeFiles/R10.5/s1ap_compare.c.o
+Linking C static library libS1AP_LIB.a
+[ 17%] Built target S1AP_LIB
+Scanning dependencies of target S1AP_ENB
+[ 17%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB.c.o
+[ 17%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_context_management_procedures.c.o
+[ 17%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_decoder.c.o
+[ 17%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_encoder.c.o
+[ 19%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_handlers.c.o
+[ 19%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_itti_messaging.c.o
+[ 19%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_management_procedures.c.o
+[ 19%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_nas_procedures.c.o
+[ 19%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_nnsf.c.o
+[ 19%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_overload.c.o
+[ 19%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_trace.c.o
+[ 19%] Building C object CMakeFiles/S1AP_ENB.dir/home/liu/openairinterface5g/openair3/S1AP/s1ap_eNB_ue_context.c.o
+Linking C static library libS1AP_ENB.a
+[ 19%] Built target S1AP_ENB
+Scanning dependencies of target RRC_LIB
+[ 19%] Building C object CMakeFiles/RRC_LIB.dir/CMakeFiles/Rel14/SystemInformation-BR-r13.c.o
+[ 19%] Building C object CMakeFiles/RRC_LIB.dir/CMakeFiles/Rel14/SystemInformation-r8-IEs.c.o
+[ 19%] Building C object CMakeFiles/RRC_LIB.dir/CMakeFiles/Rel14/SystemInformation.c.o
+[ 19%] Building C object CMakeFiles/RRC_LIB.dir/CMakeFiles/Rel14/BCCH-DL-SCH-Message-BR.c.o
+[ 19%] Building C object CMakeFiles/RRC_LIB.dir/CMakeFiles/Rel14/BCCH-DL-SCH-MessageType.c.o
+[ 19%] Building C object CMakeFiles/RRC_LIB.dir/CMakeFiles/Rel14/BCCH-DL-SCH-MessageType-BR-r13.c.o
+[ 19%] Building C object CMakeFiles/RRC_LIB.dir/CMakeFiles/Rel14/BCCH-DL-SCH-Message.c.o
+[ 19%] Building C object CMakeFiles/RRC_LIB.dir/home/liu/openairinterface5g/openair2/RRC/LITE/MESSAGES/asn1_msg.c.o
+Linking C static library libRRC_LIB.a
+[ 82%] Built target RRC_LIB
+[ 82%] Built target HASHTABLE
+Scanning dependencies of target UTIL
+[ 82%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/CLI/cli_cmd.c.o
+[ 82%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/LISTS/list.c.o
+[ 82%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/LISTS/list2.c.o
+[ 82%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/LOG/log.c.o
+[ 82%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/MEM/mem_block.c.o
+[ 82%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/OCG/OCG.c.o
+[ 82%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/OCG/OCG_create_dir.c.o
+[ 83%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/OCG/OCG_detect_file.c.o
+[ 83%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/OCG/OCG_generate_report.c.o
+[ 83%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/OCG/OCG_parse_filename.c.o
+[ 83%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/OCG/OCG_parse_XML.c.o
+[ 83%] Building C object CMakeFiles/UTIL.dir/home/liu/openairinterface5g/openair2/UTIL/OCG/OCG_save_XML.c.o
+Linking C static library libUTIL.a
+[ 83%] Built target UTIL
+[ 84%] Built target SECU_OSA
+[ 84%] Built target SECU_CN
+Scanning dependencies of target SCHED_LIB
+[ 84%] Building C object CMakeFiles/SCHED_LIB.dir/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c.o
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c: In function ‘prach_procedures_zh’:
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:2286:10: warning: variable ‘update_TA2’ set but not used [-Wunused-but-set-variable]
+  uint8_t update_TA2 = 1;
+          ^
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:2285:17: warning: variable ‘update_TA’ set but not used [-Wunused-but-set-variable]
+         uint8_t update_TA  = 4;
+                 ^
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:2282:11: warning: unused variable ‘CC_id’ [-Wunused-variable]
+   uint8_t CC_id = eNB->CC_id;
+           ^
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c: In function ‘do_prach’:
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:3033:23: warning: unused variable ‘fp’ [-Wunused-variable]
+   LTE_DL_FRAME_PARMS *fp=&eNB->frame_parms;
+                       ^
+[ 84%] Building C object CMakeFiles/SCHED_LIB.dir/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_ue.c.o
+[ 84%] Building C object CMakeFiles/SCHED_LIB.dir/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_common.c.o
+[ 84%] Building C object CMakeFiles/SCHED_LIB.dir/home/liu/openairinterface5g/openair1/SCHED/phy_mac_stub.c.o
+[ 84%] Building C object CMakeFiles/SCHED_LIB.dir/home/liu/openairinterface5g/openair1/SCHED/pucch_pc.c.o
+[ 84%] Building C object CMakeFiles/SCHED_LIB.dir/home/liu/openairinterface5g/openair1/SCHED/pusch_pc.c.o
+[ 84%] Building C object CMakeFiles/SCHED_LIB.dir/home/liu/openairinterface5g/openair1/SCHED/srs_pc.c.o
+Linking C static library libSCHED_LIB.a
+[ 84%] Built target SCHED_LIB
+Scanning dependencies of target GTPV1U
+[ 84%] Building C object CMakeFiles/GTPV1U.dir/home/liu/openairinterface5g/openair2/RRC/LITE/rrc_eNB_GTPV1U.c.o
+[ 84%] Building C object CMakeFiles/GTPV1U.dir/home/liu/openairinterface5g/openair3/GTPV1-U/nw-gtpv1u/src/NwGtpv1u.c.o
+Linking C static library libGTPV1U.a
+[ 84%] Built target GTPV1U
+Scanning dependencies of target PHY
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/pss.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/sss.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/pilots.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/pilots_mbsfn.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/dlsch_coding.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/dlsch_modulation.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/dlsch_demodulation.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/dlsch_llr_computation.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/power_control.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/dlsch_decoding.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/dlsch_scrambling.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/dci_tools.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/uci_tools.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/lte_mcs.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/pbch.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/dci.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/phich.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/pcfich.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/pucch.c.o
+/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/pucch.c: In function ‘pucchfmt3_ChannelEstimation’:
+/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/pucch.c:1266:39: warning: ‘m_self’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  int16_t         m[NUMBER_OF_UE_MAX], m_self, same_m_number;
+                                       ^
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/prach.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/pmch.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/pch.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/group_hopping.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/srs_modulation.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/drs_modulation.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/ulsch_modulation.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/ulsch_demodulation.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/ulsch_coding.c.o
+[ 84%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/ulsch_decoding.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/rar_tools.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/print_stats.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/initial_sync.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/if4_tools.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/if5_tools.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/MODULATION/ofdm_mod.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/MODULATION/slot_fep.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/MODULATION/slot_fep_mbsfn.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/MODULATION/slot_fep_ul.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/MODULATION/ul_7_5_kHz.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/MODULATION/beamforming.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/freq_equalization.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/lte_sync_time.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/lte_sync_timefreq.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/lte_adjust_sync.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/lte_dl_channel_estimation.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/lte_dl_bf_channel_estimation.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/lte_dl_mbsfn_channel_estimation.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/lte_ul_channel_estimation.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/lte_est_freq_offset.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/lte_ue_measurements.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/lte_eNB_measurements.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_ESTIMATION/adjust_gain.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_REFSIG/lte_dl_cell_spec.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_REFSIG/lte_dl_uespec.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_REFSIG/lte_gold.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_REFSIG/lte_gold_mbsfn.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_REFSIG/lte_dl_mbsfn.c.o
+[ 85%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_REFSIG/lte_ul_ref.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/lte_segmentation.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/ccoding_byte.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/ccoding_byte_lte.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/3gpplte_sse.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/crc_byte.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/3gpplte_turbo_decoder_sse_8bit.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/3gpplte_turbo_decoder_sse_16bit.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/3gpplte_turbo_decoder_avx2_16bit.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/lte_rate_matching.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/rate_matching.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/CODING/viterbi_lte.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/INIT/lte_init.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/INIT/lte_parms.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/INIT/lte_param_init.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/TOOLS/lte_dfts.c.o
+[ 86%] Building C object CMakeFiles/PHY.dir/home/liu/openairinterface5g/openair1/PHY/LTE_TRANSPORT/dlsch_llr_computation_avx2.c.o
+Linking C static library libPHY.a
+[ 88%] Built target PHY
+Scanning dependencies of target L2
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/openair2_proc.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/PDCP_v10.1.0/pdcp.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/PDCP_v10.1.0/pdcp_fifo.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/PDCP_v10.1.0/pdcp_sequence_manager.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/PDCP_v10.1.0/pdcp_primitives.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/PDCP_v10.1.0/pdcp_util.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/PDCP_v10.1.0/pdcp_security.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/PDCP_v10.1.0/pdcp_netlink.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_init.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_timer_poll_retransmit.c.o
+[ 88%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_timer_reordering.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_timer_status_prohibit.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_segment.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_segments_holes.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_in_sdu.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_receiver.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_retransmit.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_windows.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_rx_list.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_reassembly.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/AM_v9.3.0/rlc_am_status_report.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/TM_v9.3.0/rlc_tm.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/TM_v9.3.0/rlc_tm_init.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/UM_v9.3.0/rlc_um.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/UM_v9.3.0/rlc_um_fsm.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/UM_v9.3.0/rlc_um_control_primitives.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/UM_v9.3.0/rlc_um_segment.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/UM_v9.3.0/rlc_um_reassembly.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/UM_v9.3.0/rlc_um_receiver.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/UM_v9.3.0/rlc_um_dar.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/rlc_mac.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/rlc.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/rlc_rrc.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/RLC/rlc_mpls.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/RRC/LITE/rrc_UE.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/RRC/LITE/rrc_eNB.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/RRC/LITE/rrc_eNB_S1AP.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/RRC/LITE/rrc_eNB_UE_context.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/RRC/LITE/rrc_common.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/RRC/LITE/L2_interface.c.o
+[ 89%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/lte_transport_init.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/main.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/ue_procedures.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/ra_procedures.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/l1_helpers.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/rar_tools.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/eNB_scheduler.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/eNB_scheduler_dlsch.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/eNB_scheduler_ulsch.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/eNB_scheduler_mch.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/eNB_scheduler_bch.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/eNB_scheduler_primitives.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/eNB_scheduler_RA.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/pre_processor.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/LAYER2/MAC/config.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/ENB_APP/enb_app.c.o
+[ 90%] Building C object CMakeFiles/L2.dir/home/liu/openairinterface5g/openair2/ENB_APP/enb_config.c.o
+Linking C static library libL2.a
+[ 90%] Built target L2
+Scanning dependencies of target SCTP_CLIENT
+[ 90%] Building C object CMakeFiles/SCTP_CLIENT.dir/home/liu/openairinterface5g/openair3/SCTP/sctp_eNB_task.c.o
+[ 90%] Building C object CMakeFiles/SCTP_CLIENT.dir/home/liu/openairinterface5g/openair3/SCTP/sctp_eNB_itti_messaging.c.o
+Linking C static library libSCTP_CLIENT.a
+[ 90%] Built target SCTP_CLIENT
+Scanning dependencies of target UDP
+[ 90%] Building C object CMakeFiles/UDP.dir/home/liu/openairinterface5g/openair3/UDP/udp_eNB_task.c.o
+Linking C static library libUDP.a
+[ 90%] Built target UDP
+Scanning dependencies of target LIB_NAS_UE
+[ 90%] Building C object CMakeFiles/LIB_NAS_UE.dir/home/liu/openairinterface5g/openair3/NAS/UE/nas_itti_messaging.c.o
+[ 90%] Building C object CMakeFiles/LIB_NAS_UE.dir/home/liu/openairinterface5g/openair3/NAS/COMMON/API/NETWORK/nas_message.c.o
+[ 91%] Building C object CMakeFiles/LIB_NAS_UE.dir/home/liu/openairinterface5g/openair3/NAS/COMMON/EMM/MSG/emm_msg.c.o
+[ 91%] Building C object CMakeFiles/LIB_NAS_UE.dir/home/liu/openairinterface5g/openair3/NAS/COMMON/ESM/MSG/esm_msg.c.o
+[ 91%] Building C object CMakeFiles/LIB_NAS_UE.dir/home/liu/openairinterface5g/openair3/NAS/COMMON/UTIL/nas_timer.c.o
+[ 91%] Building C object CMakeFiles/LIB_NAS_UE.dir/home/liu/openairinterface5g/openair3/NAS/UE/EMM/SecurityModeControl.c.o
+[ 91%] Building C object CMakeFiles/LIB_NAS_UE.dir/home/liu/openairinterface5g/openair3/NAS/UE/EMM/SAP/emm_as.c.o
+Linking C static library libLIB_NAS_UE.a
+[ 97%] Built target LIB_NAS_UE
+[ 98%] Built target LFDS
+[ 98%] Generating CMakeFiles/messages.xml
+[100%] Generating CMakeFiles/messages_xml.h
+Scanning dependencies of target lte-softmodem
+[100%] Building C object CMakeFiles/lte-softmodem.dir/home/liu/openairinterface5g/targets/RT/USER/lte-ue.c.o
+[100%] Building C object CMakeFiles/lte-softmodem.dir/home/liu/openairinterface5g/targets/RT/USER/lte-enb.c.o
+/home/liu/openairinterface5g/targets/RT/USER/lte-enb.c: In function ‘rx_fh_if5’:
+/home/liu/openairinterface5g/targets/RT/USER/lte-enb.c:1104:3: warning: passing argument 3 of ‘eNB->ifdevice.trx_read_func’ from incompatible pointer type [enabled by default]
+   eNB->ifdevice.trx_read_func(&eNB->ifdevice,null,eNB->common_vars.rx_buff,siglen,fp->nb_antennas_tx);
+   ^
+/home/liu/openairinterface5g/targets/RT/USER/lte-enb.c:1104:3: note: expected ‘void **’ but argument is of type ‘int32_t **’
+/home/liu/openairinterface5g/targets/RT/USER/lte-enb.c:1099:34: warning: unused variable ‘flags’ [-Wunused-variable]
+   int siglen=fp->samples_per_tti,flags=1;
+                                  ^
+/home/liu/openairinterface5g/targets/RT/USER/lte-enb.c: In function ‘eNB_thread_prach’:
+/home/liu/openairinterface5g/targets/RT/USER/lte-enb.c:1561:5: warning: implicit declaration of function ‘prach_procedures_zh’ [-Wimplicit-function-declaration]
+     prach_procedures_zh(eNB);
+     ^
+[100%] Building C object CMakeFiles/lte-softmodem.dir/home/liu/openairinterface5g/targets/RT/USER/lte-softmodem.c.o
+[100%] Building C object CMakeFiles/lte-softmodem.dir/home/liu/openairinterface5g/targets/SIMU/USER/init_lte.c.o
+[100%] Building C object CMakeFiles/lte-softmodem.dir/home/liu/openairinterface5g/targets/COMMON/create_tasks.c.o
+[100%] Building C object CMakeFiles/lte-softmodem.dir/home/liu/openairinterface5g/openair1/SIMULATION/ETH_TRANSPORT/netlink_init.c.o
+[100%] Building C object CMakeFiles/lte-softmodem.dir/home/liu/openairinterface5g/openair3/NAS/UE/nas_ue_task.c.o
+[100%] Building C object CMakeFiles/lte-softmodem.dir/home/liu/openairinterface5g/openair3/GTPV1-U/gtpv1u_eNB.c.o
+[100%] Building C object CMakeFiles/lte-softmodem.dir/home/liu/openairinterface5g/openair1/PHY/TOOLS/lte_phy_scope.c.o
+Linking C executable lte-softmodem
+[100%] Built target lte-softmodem
