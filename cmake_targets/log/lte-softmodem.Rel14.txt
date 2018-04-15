@@ -235,6 +235,10 @@ Linking C static library libSCTP_CLIENT.a
 [ 90%] Built target SCTP_CLIENT
 Scanning dependencies of target UDP
 [ 90%] Building C object CMakeFiles/UDP.dir/home/liu/openairinterface5g/openair3/UDP/udp_eNB_task.c.o
+/home/liu/openairinterface5g/openair3/UDP/udp_eNB_task.c: In function ‘udp_eNB_send_to’:
+/home/liu/openairinterface5g/openair3/UDP/udp_eNB_task.c:228:3: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 14 has type ‘const uint8_t *’ [-Wformat=]
+   LOG_I(UDP_, "[SD %d] Successfully sent to "IPV4_ADDR
+   ^
 Linking C static library libUDP.a
 [ 90%] Built target UDP
 Scanning dependencies of target LIB_NAS_UE

@@ -48,7 +48,9 @@
 #include "COMMON/platform_types.h"
 #include "COMMON/platform_constants.h"
 #include "UTIL/LOG/vcd_signal_dumper.h"
-
+// zh add 20180414
+int num_recvfrom_spgw=0;
+int num_sendto_spgw=0;
 
 #undef GTP_DUMP_SOCKET
 
@@ -256,13 +258,15 @@ NwGtpv1uRcT gtpv1u_eNB_send_udp_msg(
   // Create and alloc new message
   MessageDef     *message_p       = NULL;
   udp_data_req_t *udp_data_req_p  = NULL;
-
+  printf("[gtpv1u_eNB_send_udp_msg]zh enter\n");
   message_p = itti_alloc_new_message(TASK_GTPV1_U, UDP_DATA_REQ);
 
   if (message_p) {
 #if defined(LOG_GTPU) && LOG_GTPU > 0
     LOG_D(GTPU, "Sending UDP_DATA_REQ length %u offset %u", buffer_len, buffer_offset);
 #endif
+
+    printf("[gtpv1u_eNB_send_udp_msg]sending length %d,offset%d\n",buffer_len,buffer_offset);
     udp_data_req_p = &message_p->ittiMsg.udp_data_req;
     udp_data_req_p->peer_address  = peerIpAddr;
     udp_data_req_p->peer_port     = peerPort;
@@ -336,7 +340,7 @@ NwGtpv1uRcT gtpv1u_eNB_process_stack_req(
 			 0,0,
 			 (gtpv1u_teid_data_p->eps_bearer_id) ? gtpv1u_teid_data_p->eps_bearer_id - 4: 5-4,
 			 buffer_len);
-      
+    printf("[gtpv1u_eNB_process_stack_req] zh call pdcp_data_req\n");  
       result = pdcp_data_req(
 			     &ctxt,
 			     SRB_FLAG_NO,
@@ -1031,6 +1035,8 @@ void *gtpv1u_eNB_task(void *args)
     case UDP_DATA_IND: {
       udp_data_ind_t *udp_data_ind_p;
       udp_data_ind_p = &received_message_p->ittiMsg.udp_data_ind;
+	  num_recvfrom_spgw++;
+	  printf("[gtpv1u_eNB_task] zh data comming from udp %d\n",num_recvfrom_spgw);
       nwGtpv1uProcessUdpReq(gtpv1u_data_g.gtpv1u_stack,
                             udp_data_ind_p->buffer,
                             udp_data_ind_p->buffer_length,
@@ -1049,7 +1055,8 @@ void *gtpv1u_eNB_task(void *args)
       gtpv1u_ue_data_t             *gtpv1u_ue_data_p     = NULL;
       teid_t                        enb_s1u_teid         = 0;
       teid_t                        sgw_s1u_teid         = 0;
-
+      num_sendto_spgw++;
+	  printf("[gtpv1u_eNB_task] zh data sent to udp num=%d\n",num_sendto_spgw);
       VCD_SIGNAL_DUMPER_DUMP_FUNCTION_BY_NAME(VCD_SIGNAL_DUMPER_FUNCTIONS_GTPV1U_PROCESS_TUNNEL_DATA_REQ, VCD_FUNCTION_IN);
       data_req_p = &GTPV1U_ENB_TUNNEL_DATA_REQ(received_message_p);
       //ipv4_send_data(ipv4_data_p->sd, data_ind_p->buffer, data_ind_p->length);
@@ -1070,7 +1077,7 @@ void *gtpv1u_eNB_task(void *args)
           stack_req.apiType                   = NW_GTPV1U_ULP_API_SEND_TPDU;
           stack_req.apiInfo.sendtoInfo.teid   = sgw_s1u_teid;
           stack_req.apiInfo.sendtoInfo.ipAddr = gtpv1u_ue_data_p->bearers[data_req_p->rab_id - GTPV1U_BEARER_OFFSET].sgw_ip_addr;
-
+          printf("[gtpv1u_eNB_task] ip address=%d,%d,%d,%d\n",(uint8_t)((stack_req.apiInfo.sendtoInfo.ipAddr)& 0x000000ff),(uint8_t)(((stack_req.apiInfo.sendtoInfo.ipAddr)& 0x0000ff00)>>8),(uint8_t)(((stack_req.apiInfo.sendtoInfo.ipAddr)& 0x00ff0000)>>16),(uint8_t)(((stack_req.apiInfo.sendtoInfo.ipAddr)& 0xff000000)>>24));
           rc = nwGtpv1uGpduMsgNew(
                  gtpv1u_data_g.gtpv1u_stack,
                  sgw_s1u_teid,

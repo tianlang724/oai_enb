@@ -2877,7 +2877,7 @@ static void *fep_thread(void *param) {
 }
 
 void init_fep_thread(PHY_VARS_eNB *eNB,pthread_attr_t *attr_fep) {
-
+  printf("[init_fep_thread] create fep_thread\n");
   eNB_proc_t *proc = &eNB->proc;
 
   proc->instance_cnt_fep         = -1;
@@ -2893,7 +2893,7 @@ void init_fep_thread(PHY_VARS_eNB *eNB,pthread_attr_t *attr_fep) {
 extern void *td_thread(void*);
 
 void init_td_thread(PHY_VARS_eNB *eNB,pthread_attr_t *attr_td) {
-
+  printf("[init_td_thread] create td_thread\n");
   eNB_proc_t *proc = &eNB->proc;
 
   proc->tdp.eNB = eNB;
@@ -2910,6 +2910,7 @@ extern void *te_thread(void*);
 
 void init_te_thread(PHY_VARS_eNB *eNB,pthread_attr_t *attr_te) {
 
+  printf("[init_te_thread] create te_thread\n");
   eNB_proc_t *proc = &eNB->proc;
 
   proc->tep.eNB = eNB;
@@ -2918,7 +2919,6 @@ void init_te_thread(PHY_VARS_eNB *eNB,pthread_attr_t *attr_te) {
   pthread_mutex_init( &proc->mutex_te, NULL);
   pthread_cond_init( &proc->cond_te, NULL);
 
-  printf("Creating te_thread\n");
   pthread_create(&proc->pthread_te, attr_te, te_thread, (void*)&proc->tep);
 
 }

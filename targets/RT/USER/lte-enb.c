@@ -1841,13 +1841,15 @@ void init_eNB_proc(int inst) {
     attr_td     = &proc->attr_td;
     attr_te     = &proc->attr_te; 
 #endif
-
+    printf("[init_eNB_proc] single_flag=%d\n",eNB->single_thread_flag);
     if (eNB->single_thread_flag==0) {
+	  printf("[init_eNB_proc] create rxtx_thread\n");
       pthread_create( &proc_rxtx[0].pthread_rxtx, attr0, eNB_thread_rxtx, &proc_rxtx[0] );
       pthread_create( &proc_rxtx[1].pthread_rxtx, attr1, eNB_thread_rxtx, &proc_rxtx[1] );
       pthread_create( &proc->pthread_FH, attr_FH, eNB_thread_FH, &eNB->proc );
     }
     else {
+	  printf("[init_eNB_proc] create thread_single\n");
       pthread_create(&proc->pthread_single, attr_single, eNB_thread_single, &eNB->proc);
       init_fep_thread(eNB,attr_fep);
       init_td_thread(eNB,attr_td);

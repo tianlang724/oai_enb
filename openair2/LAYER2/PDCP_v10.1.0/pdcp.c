@@ -762,8 +762,9 @@ pdcp_data_ind(
    * PDCP header)
    */
 #if defined(LINK_ENB_PDCP_TO_GTPV1U)
-
+  printf("[pdcp_data_ind] define LINK_ENB_TO_GTPV!U\n");
   if ((TRUE == ctxt_pP->enb_flag) && (FALSE == srb_flagP)) {
+  printf("[pdcp_data_ind] call itti_send to gtpv\n");
     MSC_LOG_TX_MESSAGE(
     		MSC_PDCP_ENB,
     		MSC_GTPU_ENB,
