@@ -75,7 +75,8 @@
 
 #define PUCCH 1
 #define SI_LENGTH 40
-
+//zh add 20180416 for debug
+#define DEBUG_PHY_PROC
 void exit_fun(const char* s);
 
 extern int exit_openair;
@@ -1042,7 +1043,8 @@ uint16_t pdsch_procedures(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,LTE_eNB_DLSCH_
 	memcpy((void*)eNB->common_vars.tx_dspdata[0]+dsp_offset,DLSCH_pdu,SI_LENGTH);
     //printf("[pdsch_procesures]zh si datalen=%d\n",SI_LENGTH);
 	//fflush(stdout);
-	dsp_offset+=SI_LENGTH;   
+	dsp_offset+=SI_LENGTH; 
+	printf("[pdsch_procedures] end si  dsp_offset=%d\n",dsp_offset);
 	}else{
 			// ue special data
 	//	struct ENB_DL_TYPE1_PDSCH_C pdschc;
@@ -1051,6 +1053,7 @@ uint16_t pdsch_procedures(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,LTE_eNB_DLSCH_
 	//	memcpy(eNB->common_vars.tx_dspdata[0]+dsp_offset,&pdschc,sizeof(ENB_DL_TYPE1_PDSCH_C));
 	//	dsp_offset+=sizeof(ENB_DL_TYPE1_PDSCH_C);
 
+		printf("[pdsch_procedures] begine ue data  dsp_offset=%d,pdschd=%d\n",dsp_offset,sizeof(ENB_DL_TYPE1_PDSCH_D));
 		struct ENB_DL_TYPE1_PDSCH_D pdschd;
 		memset(&pdschd,0,sizeof(ENB_DL_TYPE1_PDSCH_D));
 		pdschd.RNTI=htons(dlsch->rnti);
@@ -1059,11 +1062,10 @@ uint16_t pdsch_procedures(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,LTE_eNB_DLSCH_
 		memcpy((void*)eNB->common_vars.tx_dspdata[0]+dsp_offset,&pdschd,sizeof(ENB_DL_TYPE1_PDSCH_D));
 		dsp_offset+=sizeof(ENB_DL_TYPE1_PDSCH_D);
 	    memcpy((void*)eNB->common_vars.tx_dspdata[0]+dsp_offset,DLSCH_pdu,datalen);
-		/*
 		for(int i=0;i<datalen;i++){
 				printf("%x ",DLSCH_pdu[i]);
 		}
-		printf("\n");*/
+		printf("\n");
 		dsp_offset+=datalen;
 		printf("[pdsch_procedures] zh ue datalen=%d,dsp_offset=%d\n",datalen,dsp_offset);
 		fflush(stdout);
@@ -1629,7 +1631,7 @@ void phy_procedures_eNB_TX(PHY_VARS_eNB *eNB,
       if ((eNB->dlsch[(uint8_t)UE_id][0])&&
 	  (eNB->dlsch[(uint8_t)UE_id][0]->rnti>0)&&
 	  (eNB->dlsch[(uint8_t)UE_id][0]->active == 1)) {
-    printf("[phy_procedures_eNB_TX] dsp_offset=%d\n",dsp_offset);
+    printf("[phy_procedures_eNB_TX] ue data dsp_offset=%d\n",dsp_offset);
 	dsp_offset=pdsch_procedures(eNB,proc,eNB->dlsch[(uint8_t)UE_id][0],eNB->dlsch[(uint8_t)UE_id][1],&eNB->UE_stats[(uint32_t)UE_id],0,num_pdcch_symbols,dsp_offset);
 
 
@@ -1729,7 +1731,248 @@ void process_Msg3(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,uint8_t UE_id, uint8_t
           frame,subframe,UE_id);
   }
 }
+#if 0
+void process_HARQ_feedback_zh(uint8_t UE_id,
+                           PHY_VARS_eNB *eNB,
+			   eNB_rxtx_proc_t *proc,
+                           uint8_t pusch_flag,
+                           uint8_t *pucch_payload,
+                           uint8_t pucch_sel,
+                           uint8_t SR_payload)
+{
 
+  LTE_DL_FRAME_PARMS *fp=&eNB->frame_parms;
+  uint8_t dl_harq_pid[8],dlsch_ACK[8],dl_subframe;
+  LTE_eNB_DLSCH_t *dlsch             =  eNB->dlsch[(uint32_t)UE_id][0];
+  LTE_eNB_UE_stats *ue_stats         =  &eNB->UE_stats[(uint32_t)UE_id];
+  LTE_DL_eNB_HARQ_t *dlsch_harq_proc;
+  uint8_t subframe_m4,M,m;
+  int mp;
+  int all_ACKed=1,nb_alloc=0,nb_ACK=0;
+  int frame = proc->frame_rx;
+  int subframe = proc->subframe_rx;
+  int harq_pid = subframe2harq_pid( fp,frame,subframe);
+
+  if (fp->frame_type == FDD) { //FDD
+
+  } else { // TDD Handle M=1,2 cases only
+
+    M=ul_ACK_subframe2_M(fp,
+                         subframe);
+
+    // Now derive ACK information for TDD
+    if (pusch_flag == 1) { // Do PUSCH ACK/NAK first
+      // detect missing DAI
+      //FK: this code is just a guess
+      //RK: not exactly, yes if scheduled from PHICH (i.e. no DCI format 0)
+      //    otherwise, it depends on how many of the PDSCH in the set are scheduled, we can leave it like this,
+      //    but we have to adapt the code below.  For example, if only one out of 2 are scheduled, only 1 bit o_ACK is used
+/*
+      dlsch_ACK[0] = eNB->ulsch[(uint8_t)UE_id]->harq_processes[harq_pid]->o_ACK[0];
+      dlsch_ACK[1] = (eNB->pucch_config_dedicated[UE_id].tdd_AckNackFeedbackMode == bundling)
+	?eNB->ulsch[(uint8_t)UE_id]->harq_processes[harq_pid]->o_ACK[0]:eNB->ulsch[(uint8_t)UE_id]->harq_processes[harq_pid]->o_ACK[1];*/
+    }
+
+    else {  // PUCCH ACK/NAK
+			/*
+      if ((SR_payload == 1)&&(pucch_sel!=2)) {  // decode Table 7.3 if multiplexing and SR=1
+        nb_ACK = 0;
+
+        if (M == 2) {
+          if ((pucch_payload[0] == 1) && (pucch_payload[1] == 1)) // b[0],b[1]
+            nb_ACK = 1;
+          else if ((pucch_payload[0] == 1) && (pucch_payload[1] == 0))
+            nb_ACK = 2;
+        } else if (M == 3) {
+          if ((pucch_payload[0] == 1) && (pucch_payload[1] == 1))
+            nb_ACK = 1;
+          else if ((pucch_payload[0] == 1) && (pucch_payload[1] == 0))
+            nb_ACK = 2;
+          else if ((pucch_payload[0] == 0) && (pucch_payload[1] == 1))
+            nb_ACK = 3;
+        }
+      } else if (pucch_sel == 2) { // bundling or M=1
+        dlsch_ACK[0] = pucch_payload[0];
+        dlsch_ACK[1] = pucch_payload[0];
+      } else { // multiplexing with no SR, this is table 10.1
+        if (M==1)
+          dlsch_ACK[0] = pucch_payload[0];
+        else if (M==2) {
+          if (((pucch_sel == 1) && (pucch_payload[0] == 1) && (pucch_payload[1] == 1)) ||
+              ((pucch_sel == 0) && (pucch_payload[0] == 0) && (pucch_payload[1] == 1)))
+            dlsch_ACK[0] = 1;
+          else
+            dlsch_ACK[0] = 0;
+
+          if (((pucch_sel == 1) && (pucch_payload[0] == 1) && (pucch_payload[1] == 1)) ||
+              ((pucch_sel == 1) && (pucch_payload[0] == 0) && (pucch_payload[1] == 0)))
+            dlsch_ACK[1] = 1;
+          else
+            dlsch_ACK[1] = 0;
+        }
+      }*/
+    }
+  }
+  /*
+  // handle case where positive SR was transmitted with multiplexing
+  if ((SR_payload == 1)&&(pucch_sel!=2)&&(pusch_flag == 0)) {
+    nb_alloc = 0;
+
+    for (m=0; m<M; m++) {
+      dl_subframe = ul_ACK_subframe2_dl_subframe(fp,
+						 subframe,
+						 m);
+
+      if (dlsch->subframe_tx[dl_subframe]==1)
+        nb_alloc++;
+    }
+
+    if (nb_alloc == nb_ACK)
+      all_ACKed = 1;
+    else
+      all_ACKed = 0;
+  }*/
+
+
+  for (m=0,mp=-1; m<M; m++) {
+
+    dl_subframe = ul_ACK_subframe2_dl_subframe(fp,
+					       subframe,
+					       m);
+
+    if (dlsch->subframe_tx[dl_subframe]==1) {
+      if (pusch_flag == 1)
+        mp++;
+      else
+        mp = m;
+
+      dl_harq_pid[m]     = dlsch->harq_ids[dl_subframe];
+      harq_pid_updated[UE_id][dl_harq_pid[m]] = 1;
+
+      if ((pucch_sel != 2)&&(pusch_flag == 0)) { // multiplexing
+        if ((SR_payload == 1)&&(all_ACKed == 1))
+          dlsch_ACK[m] = 1;
+        else
+          dlsch_ACK[m] = 0;
+      }
+
+      if (dl_harq_pid[m]<dlsch->Mdlharq) {
+        dlsch_harq_proc = dlsch->harq_processes[dl_harq_pid[m]];
+#ifdef DEBUG_PHY_PROC
+        LOG_D(PHY,"[eNB %d][PDSCH %x/%d] subframe %d, status %d, round %d (mcs %d, rv %d, TBS %d)\n",eNB->Mod_id,
+              dlsch->rnti,dl_harq_pid[m],dl_subframe,
+              dlsch_harq_proc->status,dlsch_harq_proc->round,
+              dlsch->harq_processes[dl_harq_pid[m]]->mcs,
+              dlsch->harq_processes[dl_harq_pid[m]]->rvidx,
+              dlsch->harq_processes[dl_harq_pid[m]]->TBS);
+
+        if (dlsch_harq_proc->status==DISABLED)
+          LOG_E(PHY,"dlsch_harq_proc is disabled? \n");
+
+#endif
+
+        if ((dl_harq_pid[m]<dlsch->Mdlharq) &&
+            (dlsch_harq_proc->status == ACTIVE)) {
+          // dl_harq_pid of DLSCH is still active
+
+          if ( dlsch_ACK[mp]==0) {
+            // Received NAK
+#ifdef DEBUG_PHY_PROC
+            LOG_D(PHY,"[eNB %d][PDSCH %x/%d] M = %d, m= %d, mp=%d NAK Received in round %d, requesting retransmission\n",eNB->Mod_id,
+                  dlsch->rnti,dl_harq_pid[m],M,m,mp,dlsch_harq_proc->round);
+#endif
+
+            T(T_ENB_PHY_DLSCH_UE_NACK, T_INT(eNB->Mod_id), T_INT(frame), T_INT(subframe), T_INT(UE_id), T_INT(dlsch->rnti),
+              T_INT(dl_harq_pid[m]));
+
+            if (dlsch_harq_proc->round == 0)
+              ue_stats->dlsch_NAK_round0++;
+
+            ue_stats->dlsch_NAK[dl_harq_pid[m]][dlsch_harq_proc->round]++;
+
+
+            // then Increment DLSCH round index
+            dlsch_harq_proc->round++;
+
+
+            if (dlsch_harq_proc->round == dlsch->Mlimit) {
+              // This was the last round for DLSCH so reset round and increment l2_error counter
+#ifdef DEBUG_PHY_PROC
+              LOG_W(PHY,"[eNB %d][PDSCH %x/%d] DLSCH retransmissions exhausted, dropping packet\n",eNB->Mod_id,
+                    dlsch->rnti,dl_harq_pid[m]);
+#endif
+#if defined(MESSAGE_CHART_GENERATOR_PHY)
+              MSC_LOG_EVENT(MSC_PHY_ENB, "0 HARQ DLSCH Failed RNTI %"PRIx16" round %u",
+                            dlsch->rnti,
+                            dlsch_harq_proc->round);
+#endif
+
+              dlsch_harq_proc->round = 0;
+              ue_stats->dlsch_l2_errors[dl_harq_pid[m]]++;
+              dlsch_harq_proc->status = SCH_IDLE;
+              dlsch->harq_ids[dl_subframe] = dlsch->Mdlharq;
+            }
+          } else {
+#ifdef DEBUG_PHY_PROC
+            LOG_D(PHY,"[eNB %d][PDSCH %x/%d] ACK Received in round %d, resetting process\n",eNB->Mod_id,
+                  dlsch->rnti,dl_harq_pid[m],dlsch_harq_proc->round);
+#endif
+
+            T(T_ENB_PHY_DLSCH_UE_ACK, T_INT(eNB->Mod_id), T_INT(frame), T_INT(subframe), T_INT(UE_id), T_INT(dlsch->rnti),
+              T_INT(dl_harq_pid[m]));
+
+            ue_stats->dlsch_ACK[dl_harq_pid[m]][dlsch_harq_proc->round]++;
+
+            // Received ACK so set round to 0 and set dlsch_harq_pid IDLE
+            dlsch_harq_proc->round  = 0;
+            dlsch_harq_proc->status = SCH_IDLE;
+            dlsch->harq_ids[dl_subframe] = dlsch->Mdlharq;
+
+            ue_stats->total_TBS = ue_stats->total_TBS +
+	      eNB->dlsch[(uint8_t)UE_id][0]->harq_processes[dl_harq_pid[m]]->TBS;
+            /*
+              ue_stats->total_transmitted_bits = ue_stats->total_transmitted_bits +
+              eNB->dlsch[(uint8_t)UE_id][0]->harq_processes[dl_harq_pid[m]]->TBS;
+            */
+          }
+	 
+          // Do fine-grain rate-adaptation for DLSCH
+          if (ue_stats->dlsch_NAK_round0 > dlsch->error_threshold) {
+            if (ue_stats->dlsch_mcs_offset == 1)
+              ue_stats->dlsch_mcs_offset=0;
+            else
+              ue_stats->dlsch_mcs_offset=-1;
+          }
+
+#ifdef DEBUG_PHY_PROC
+          LOG_D(PHY,"[process_HARQ_feedback] Frame %d Setting round to %d for pid %d (subframe %d)\n",frame,
+                dlsch_harq_proc->round,dl_harq_pid[m],subframe);
+#endif
+	  harq_pid_round[UE_id][dl_harq_pid[m]] = dlsch_harq_proc->round;
+          // Clear NAK stats and adjust mcs offset
+          // after measurement window timer expires
+          if (ue_stats->dlsch_sliding_cnt == dlsch->ra_window_size) {
+            if ((ue_stats->dlsch_mcs_offset == 0) && (ue_stats->dlsch_NAK_round0 < 2))
+              ue_stats->dlsch_mcs_offset = 1;
+
+            if ((ue_stats->dlsch_mcs_offset == 1) && (ue_stats->dlsch_NAK_round0 > 2))
+              ue_stats->dlsch_mcs_offset = 0;
+
+            if ((ue_stats->dlsch_mcs_offset == 0) && (ue_stats->dlsch_NAK_round0 > 2))
+              ue_stats->dlsch_mcs_offset = -1;
+
+            if ((ue_stats->dlsch_mcs_offset == -1) && (ue_stats->dlsch_NAK_round0 < 2))
+              ue_stats->dlsch_mcs_offset = 0;
+
+            ue_stats->dlsch_NAK_round0 = 0;
+            ue_stats->dlsch_sliding_cnt = 0;
+          }
+        }
+      }
+    }
+  }
+}
+#endif
 
 // This function retrieves the harq_pid of the corresponding DLSCH process
 // and updates the error statistics of the DLSCH based on the received ACK
@@ -1744,7 +1987,7 @@ void process_HARQ_feedback(uint8_t UE_id,
                            uint8_t pucch_sel,
                            uint8_t SR_payload)
 {
-
+  printf("[process_HARQ_feedback]enter\n");
   LTE_DL_FRAME_PARMS *fp=&eNB->frame_parms;
   uint8_t dl_harq_pid[8],dlsch_ACK[8],dl_subframe;
   LTE_eNB_DLSCH_t *dlsch             =  eNB->dlsch[(uint32_t)UE_id][0];
@@ -1895,7 +2138,7 @@ void process_HARQ_feedback(uint8_t UE_id,
 
       if (dl_harq_pid[m]<dlsch->Mdlharq) {
         dlsch_harq_proc = dlsch->harq_processes[dl_harq_pid[m]];
-#ifdef DEBUG_PHY_PROC
+//#ifdef DEBUG_PHY_PROC
         LOG_D(PHY,"[eNB %d][PDSCH %x/%d] subframe %d, status %d, round %d (mcs %d, rv %d, TBS %d)\n",eNB->Mod_id,
               dlsch->rnti,dl_harq_pid[m],dl_subframe,
               dlsch_harq_proc->status,dlsch_harq_proc->round,
@@ -1906,7 +2149,7 @@ void process_HARQ_feedback(uint8_t UE_id,
         if (dlsch_harq_proc->status==DISABLED)
           LOG_E(PHY,"dlsch_harq_proc is disabled? \n");
 
-#endif
+//#endif
 
         if ((dl_harq_pid[m]<dlsch->Mdlharq) &&
             (dlsch_harq_proc->status == ACTIVE)) {
@@ -1914,10 +2157,10 @@ void process_HARQ_feedback(uint8_t UE_id,
 
           if ( dlsch_ACK[mp]==0) {
             // Received NAK
-#ifdef DEBUG_PHY_PROC
+//#ifdef DEBUG_PHY_PROC
             LOG_D(PHY,"[eNB %d][PDSCH %x/%d] M = %d, m= %d, mp=%d NAK Received in round %d, requesting retransmission\n",eNB->Mod_id,
                   dlsch->rnti,dl_harq_pid[m],M,m,mp,dlsch_harq_proc->round);
-#endif
+//#endif
 
             T(T_ENB_PHY_DLSCH_UE_NACK, T_INT(eNB->Mod_id), T_INT(frame), T_INT(subframe), T_INT(UE_id), T_INT(dlsch->rnti),
               T_INT(dl_harq_pid[m]));
@@ -1934,10 +2177,10 @@ void process_HARQ_feedback(uint8_t UE_id,
 
             if (dlsch_harq_proc->round == dlsch->Mlimit) {
               // This was the last round for DLSCH so reset round and increment l2_error counter
-#ifdef DEBUG_PHY_PROC
+//#ifdef DEBUG_PHY_PROC
               LOG_W(PHY,"[eNB %d][PDSCH %x/%d] DLSCH retransmissions exhausted, dropping packet\n",eNB->Mod_id,
                     dlsch->rnti,dl_harq_pid[m]);
-#endif
+//#endif
 #if defined(MESSAGE_CHART_GENERATOR_PHY)
               MSC_LOG_EVENT(MSC_PHY_ENB, "0 HARQ DLSCH Failed RNTI %"PRIx16" round %u",
                             dlsch->rnti,
@@ -1950,10 +2193,10 @@ void process_HARQ_feedback(uint8_t UE_id,
               dlsch->harq_ids[dl_subframe] = dlsch->Mdlharq;
             }
           } else {
-#ifdef DEBUG_PHY_PROC
+//#ifdef DEBUG_PHY_PROC
             LOG_D(PHY,"[eNB %d][PDSCH %x/%d] ACK Received in round %d, resetting process\n",eNB->Mod_id,
                   dlsch->rnti,dl_harq_pid[m],dlsch_harq_proc->round);
-#endif
+//#endif
 
             T(T_ENB_PHY_DLSCH_UE_ACK, T_INT(eNB->Mod_id), T_INT(frame), T_INT(subframe), T_INT(UE_id), T_INT(dlsch->rnti),
               T_INT(dl_harq_pid[m]));
@@ -3279,6 +3522,7 @@ void phy_procedures_eNB_uespec_RX(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,const 
 	   }
 	 }
 
+
       // UE is has ULSCH scheduling
       round = eNB->ulsch[i]->harq_processes[harq_pid]->round;
  
@@ -3571,7 +3815,6 @@ void phy_procedures_eNB_uespec_RX(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,const 
       else {
 
 
-
         T(T_ENB_PHY_ULSCH_UE_ACK, T_INT(eNB->Mod_id), T_INT(frame), T_INT(subframe), T_INT(i), T_INT(eNB->ulsch[i]->rnti),
           T_INT(harq_pid));
 
@@ -3837,7 +4080,7 @@ void phy_procedures_eNB_uespec_RX(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,const 
   VCD_SIGNAL_DUMPER_DUMP_FUNCTION_BY_NAME( VCD_SIGNAL_DUMPER_FUNCTIONS_PHY_PROCEDURES_ENB_RX_UESPEC+offset, 0 );
 
   stop_meas(&eNB->phy_proc_rx);
-
+//#endif
 }
 
 #undef DEBUG_PHY_PROC

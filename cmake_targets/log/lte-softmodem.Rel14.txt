@@ -59,18 +59,22 @@ Linking C static library libUTIL.a
 [ 84%] Built target SECU_CN
 Scanning dependencies of target SCHED_LIB
 [ 84%] Building C object CMakeFiles/SCHED_LIB.dir/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c.o
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c: In function ‘pdsch_procedures’:
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:1056:3: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘long unsigned int’ [-Wformat=]
+   printf("[pdsch_procedures] begine ue data  dsp_offset=%d,pdschd=%d\n",dsp_offset,sizeof(ENB_DL_TYPE1_PDSCH_D));
+   ^
 /home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c: In function ‘prach_procedures_zh’:
-/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:2286:10: warning: variable ‘update_TA2’ set but not used [-Wunused-but-set-variable]
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:2529:10: warning: variable ‘update_TA2’ set but not used [-Wunused-but-set-variable]
   uint8_t update_TA2 = 1;
           ^
-/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:2285:17: warning: variable ‘update_TA’ set but not used [-Wunused-but-set-variable]
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:2528:17: warning: variable ‘update_TA’ set but not used [-Wunused-but-set-variable]
          uint8_t update_TA  = 4;
                  ^
-/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:2282:11: warning: unused variable ‘CC_id’ [-Wunused-variable]
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:2525:11: warning: unused variable ‘CC_id’ [-Wunused-variable]
    uint8_t CC_id = eNB->CC_id;
            ^
 /home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c: In function ‘do_prach’:
-/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:3033:23: warning: unused variable ‘fp’ [-Wunused-variable]
+/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_eNb.c:3276:23: warning: unused variable ‘fp’ [-Wunused-variable]
    LTE_DL_FRAME_PARMS *fp=&eNB->frame_parms;
                        ^
 [ 84%] Building C object CMakeFiles/SCHED_LIB.dir/home/liu/openairinterface5g/openair1/SCHED/phy_procedures_lte_ue.c.o
