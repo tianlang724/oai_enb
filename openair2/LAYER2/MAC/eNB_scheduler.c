@@ -279,7 +279,7 @@ void eNB_dlsch_ulsch_scheduler(module_id_t module_idP,uint8_t cooperation_flag, 
   }
 
 #if defined(ENABLE_ITTI)
-
+printf("[eNB_dlsch_ulsch_scheduler]zh define ENABLE_ITTI\n");
   do {
     // Checks if a message has been sent to MAC sub-task
     itti_poll_msg (TASK_MAC_ENB, &msg_p);

@@ -1035,16 +1035,11 @@ uint16_t pdsch_procedures(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,LTE_eNB_DLSCH_
 	struct ENB_DL_TYPE1_PDSCH_D pdschd;
 	memset(&pdschd,0,sizeof(pdschd));
 	pdschd.RNTI=htons(SI_RNTI);
-	//pdschd.PdschData=htons(dlsch_harq->TBS>>3);
 	pdschd.PdschData=htons(SI_LENGTH);
 	memcpy((void*)eNB->common_vars.tx_dspdata[0]+dsp_offset,&pdschd,sizeof(ENB_DL_TYPE1_PDSCH_D));
 	dsp_offset+=sizeof(ENB_DL_TYPE1_PDSCH_D);
-	//printf("[pdsch_procesures] si data_offset=%d\n",dsp_offset);
 	memcpy((void*)eNB->common_vars.tx_dspdata[0]+dsp_offset,DLSCH_pdu,SI_LENGTH);
-    //printf("[pdsch_procesures]zh si datalen=%d\n",SI_LENGTH);
-	//fflush(stdout);
 	dsp_offset+=SI_LENGTH; 
-	printf("[pdsch_procedures] end si  dsp_offset=%d\n",dsp_offset);
 	}else{
 			// ue special data
 	//	struct ENB_DL_TYPE1_PDSCH_C pdschc;
@@ -1053,7 +1048,7 @@ uint16_t pdsch_procedures(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,LTE_eNB_DLSCH_
 	//	memcpy(eNB->common_vars.tx_dspdata[0]+dsp_offset,&pdschc,sizeof(ENB_DL_TYPE1_PDSCH_C));
 	//	dsp_offset+=sizeof(ENB_DL_TYPE1_PDSCH_C);
 
-		printf("[pdsch_procedures] begine ue data  dsp_offset=%d,pdschd=%d\n",dsp_offset,sizeof(ENB_DL_TYPE1_PDSCH_D));
+	//	printf("[pdsch_procedures] begine ue data  dsp_offset=%d,pdschd=%d\n",dsp_offset,sizeof(ENB_DL_TYPE1_PDSCH_D));
 		struct ENB_DL_TYPE1_PDSCH_D pdschd;
 		memset(&pdschd,0,sizeof(ENB_DL_TYPE1_PDSCH_D));
 		pdschd.RNTI=htons(dlsch->rnti);
@@ -1062,10 +1057,10 @@ uint16_t pdsch_procedures(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,LTE_eNB_DLSCH_
 		memcpy((void*)eNB->common_vars.tx_dspdata[0]+dsp_offset,&pdschd,sizeof(ENB_DL_TYPE1_PDSCH_D));
 		dsp_offset+=sizeof(ENB_DL_TYPE1_PDSCH_D);
 	    memcpy((void*)eNB->common_vars.tx_dspdata[0]+dsp_offset,DLSCH_pdu,datalen);
-		for(int i=0;i<datalen;i++){
+		/*for(int i=0;i<datalen;i++){
 				printf("%x ",DLSCH_pdu[i]);
 		}
-		printf("\n");
+		printf("\n");*/
 		dsp_offset+=datalen;
 		printf("[pdsch_procedures] zh ue datalen=%d,dsp_offset=%d\n",datalen,dsp_offset);
 		fflush(stdout);
@@ -1325,8 +1320,8 @@ void phy_procedures_eNB_TX(PHY_VARS_eNB *eNB,
       memset(&eNB->common_vars.txdataF[0][aa][subframe*fp->ofdm_symbol_size*(fp->symbols_per_tti)],
              0,fp->ofdm_symbol_size*(fp->symbols_per_tti)*sizeof(int32_t));
 	  // zh add 20170926 init my buffer
-	  memset(eNB->common_vars.tx_buff[aa],0,5000*sizeof(int32_t));
-	  memset(eNB->common_vars.tx_dspdata[aa],0,5000*sizeof(int32_t));
+	  memset(eNB->common_vars.tx_buff[aa],0,ZH_TXBUFF_SIZE*sizeof(int32_t));
+	  memset(eNB->common_vars.tx_dspdata[aa],0,ZH_TXDSP_SIZE*sizeof(int32_t));
 	  eNB->common_vars.dsp_data_flag=0;
 	  //printf("[phy_procedures_eNB_TX] txbuff init\n");
 	  //fflush(stdout);
@@ -1522,6 +1517,7 @@ void phy_procedures_eNB_TX(PHY_VARS_eNB *eNB,
 	int lenc=sizeof(ENB_DL_TYPE1_PDCCH_C);
 	int lend=sizeof(ENB_DL_TYPE1_PDCCH_D);
 	for (i=0; i<DCI_pdu->Num_common_dci + DCI_pdu->Num_ue_spec_dci ; i++) {  
+		eNB->common_vars.dsp_data_flag=1;
 		dci_alloc = &DCI_pdu->dci_alloc[i];
 		if(dci_alloc->rnti==SI_RNTI){
 				tpdcchc=pdcchc;
@@ -1585,9 +1581,9 @@ void phy_procedures_eNB_TX(PHY_VARS_eNB *eNB,
   // Now scan UE specific DLSCH
   if ((eNB->dlsch_SI) && (eNB->dlsch_SI->active == 1)) {
      
-    printf("[phy_procedures_eNB_TX] before si dsp_offset=%d\n",dsp_offset);
+    //printf("[phy_procedures_eNB_TX] before si dsp_offset=%d\n",dsp_offset);
     dsp_offset=pdsch_procedures(eNB,proc,eNB->dlsch_SI,(LTE_eNB_DLSCH_t*)NULL,(LTE_eNB_UE_stats*)NULL,0,num_pdcch_symbols,dsp_offset);
-    printf("[phy_procedures_eNB_TX] end si dsp_offset=%d\n",dsp_offset);
+    //printf("[phy_procedures_eNB_TX] end si dsp_offset=%d\n",dsp_offset);
 
 #if defined(SMBV) 
 
@@ -3666,6 +3662,10 @@ void phy_procedures_eNB_uespec_RX(PHY_VARS_eNB *eNB,eNB_rxtx_proc_t *proc,const 
         eNB->UE_stats[i].rank = eNB->ulsch[i]->harq_processes[harq_pid]->o_RI[0];
 
       }
+	  //zh add test cqi 20180513
+	  printf("[phy_procedures_eNB_uespec_RX] zh set cqi\n");
+      eNB->UE_stats[i].DL_cqi[0] = 10;
+      eNB->UE_stats[i].DL_cqi[1] = 10;
 
       if (eNB->ulsch[i]->Msg3_flag == 1)
 	VCD_SIGNAL_DUMPER_DUMP_FUNCTION_BY_NAME(VCD_SIGNAL_DUMPER_FUNCTIONS_PHY_ENB_ULSCH_MSG3,0);

@@ -411,6 +411,7 @@ rlc_op_status_t rlc_data_req     (const protocol_ctxt_t* const ctxt_pP,
     LOG_D(RLC,"RLC_TYPE : %d\n", rlc_mode);
 #endif
 
+    LOG_I(RLC,"RLC_TYPE : %d\n", rlc_mode);
     switch (rlc_mode) {
     case RLC_MODE_NONE:
       free_mem_block(sdu_pP, __func__);

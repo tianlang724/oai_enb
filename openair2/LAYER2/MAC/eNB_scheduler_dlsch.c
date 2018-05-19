@@ -1992,6 +1992,9 @@ get_dlsch_sdu(
 
   if (UE_id != -1) {
     LOG_D(MAC,"[eNB %d] Frame %d:  CC_id %d Get DLSCH sdu for rnti %x => UE_id %d\n",module_idP,frameP,CC_id,rntiP,UE_id);
+	//zh add 20180511 
+	printf("[get_dlsch_sdu] pdu_length=%d\n",eNB->UE_list.DLSCH_pdu[CC_id][TBindex][UE_id].Pdu_size[0]);
+
     return((unsigned char *)&eNB->UE_list.DLSCH_pdu[CC_id][TBindex][UE_id].payload[0]);
   } else {
     LOG_E(MAC,"[eNB %d] Frame %d: CC_id %d UE with RNTI %x does not exist\n", module_idP,frameP,CC_id,rntiP);

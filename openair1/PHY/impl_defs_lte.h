@@ -838,7 +838,9 @@ typedef struct OPENAIR_TO_SRIO_UP
 }OPENAIR_TO_SRIO_UP;
 
 
-
+#define ZH_TXBUFF_SIZE 5000
+#define ZH_TXDSP_SIZE 4000
+#define ZH_RXBUFF_SIZE 5000
 
 typedef struct {
   /// zh add txbuff 20170926

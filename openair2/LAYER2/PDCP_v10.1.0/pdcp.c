@@ -161,7 +161,7 @@ boolean_t pdcp_data_req(
   // PDCP transparent mode for MBMS traffic
 
   if (modeP == PDCP_TRANSMISSION_MODE_TRANSPARENT) {
-    LOG_D(PDCP, " [TM] Asking for a new mem_block of size %d\n",sdu_buffer_sizeP);
+    LOG_I(PDCP, " [TM] Asking for a new mem_block of size %d\n",sdu_buffer_sizeP);
     pdcp_pdu_p = get_free_mem_block(sdu_buffer_sizeP, __func__);
 
     if (pdcp_pdu_p != NULL) {
@@ -194,7 +194,7 @@ boolean_t pdcp_data_req(
 
     pdcp_pdu_size = sdu_buffer_sizeP + pdcp_header_len + pdcp_tailer_len;
 
-    LOG_D(PDCP, PROTOCOL_PDCP_CTXT_FMT"Data request notification  pdu size %d (header%d, trailer%d)\n",
+    LOG_I(PDCP, PROTOCOL_PDCP_CTXT_FMT"Data request notification  pdu size %d (header%d, trailer%d)\n",
           PROTOCOL_PDCP_CTXT_ARGS(ctxt_pP,pdcp_p),
           pdcp_pdu_size,
           pdcp_header_len,
@@ -213,6 +213,7 @@ boolean_t pdcp_data_req(
        */
 
       if (srb_flagP) { // this Control plane PDCP Data PDU
+	    //printf("[pdcp_data_ind] srb_flag=true\n");
         pdcp_control_plane_data_pdu_header pdu_header;
         pdu_header.sn = pdcp_get_next_tx_seq_number(pdcp_p);
         current_sn = pdu_header.sn;
@@ -233,6 +234,7 @@ boolean_t pdcp_data_req(
           return FALSE;
         }
       } else {
+	    //printf("[pdcp_data_ind] srb_flag=false\n");
         pdcp_user_plane_data_pdu_header_with_long_sn pdu_header;
         pdu_header.dc = (modeP == PDCP_TRANSMISSION_MODE_DATA) ? PDCP_DATA_PDU_BIT_SET :  PDCP_CONTROL_PDU_BIT_SET;
         pdu_header.sn = pdcp_get_next_tx_seq_number(pdcp_p);
@@ -317,7 +319,7 @@ boolean_t pdcp_data_req(
 #endif
 
       /* Print octets of outgoing data in hexadecimal form */
-      LOG_D(PDCP, "Following content with size %d will be sent over RLC (PDCP PDU header is the first two bytes)\n",
+      LOG_I(PDCP, "Following content with size %d will be sent over RLC (PDCP PDU header is the first two bytes)\n",
             pdcp_pdu_size);
       //util_print_hex_octets(PDCP, (unsigned char*)pdcp_pdu_p->data, pdcp_pdu_size);
       //util_flush_hex_octets(PDCP, (unsigned char*)pdcp_pdu->data, pdcp_pdu_size);

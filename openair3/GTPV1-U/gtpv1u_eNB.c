@@ -340,7 +340,7 @@ NwGtpv1uRcT gtpv1u_eNB_process_stack_req(
 			 0,0,
 			 (gtpv1u_teid_data_p->eps_bearer_id) ? gtpv1u_teid_data_p->eps_bearer_id - 4: 5-4,
 			 buffer_len);
-    printf("[gtpv1u_eNB_process_stack_req] zh call pdcp_data_req\n");  
+    //printf("[gtpv1u_eNB_process_stack_req] zh call pdcp_data_req,datalen=%d\n",buffer_len);  
       result = pdcp_data_req(
 			     &ctxt,
 			     SRB_FLAG_NO,
@@ -1036,7 +1036,7 @@ void *gtpv1u_eNB_task(void *args)
       udp_data_ind_t *udp_data_ind_p;
       udp_data_ind_p = &received_message_p->ittiMsg.udp_data_ind;
 	  num_recvfrom_spgw++;
-	  printf("[gtpv1u_eNB_task] zh data comming from udp %d\n",num_recvfrom_spgw);
+	  //printf("[gtpv1u_eNB_task] zh data comming from udp %d,data_len=%d\n",num_recvfrom_spgw,udp_data_ind_p->buffer_length);
       nwGtpv1uProcessUdpReq(gtpv1u_data_g.gtpv1u_stack,
                             udp_data_ind_p->buffer,
                             udp_data_ind_p->buffer_length,
@@ -1056,7 +1056,7 @@ void *gtpv1u_eNB_task(void *args)
       teid_t                        enb_s1u_teid         = 0;
       teid_t                        sgw_s1u_teid         = 0;
       num_sendto_spgw++;
-	  printf("[gtpv1u_eNB_task] zh data sent to udp num=%d\n",num_sendto_spgw);
+	  //printf("[gtpv1u_eNB_task] zh data sent to udp num=%d\n",num_sendto_spgw);
       VCD_SIGNAL_DUMPER_DUMP_FUNCTION_BY_NAME(VCD_SIGNAL_DUMPER_FUNCTIONS_GTPV1U_PROCESS_TUNNEL_DATA_REQ, VCD_FUNCTION_IN);
       data_req_p = &GTPV1U_ENB_TUNNEL_DATA_REQ(received_message_p);
       //ipv4_send_data(ipv4_data_p->sd, data_ind_p->buffer, data_ind_p->length);

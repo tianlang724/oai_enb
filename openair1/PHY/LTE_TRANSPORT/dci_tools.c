@@ -43,7 +43,7 @@
 #include "LAYER2/MAC/extern.h"
 #include "LAYER2/MAC/defs.h"
 
-//#define DEBUG_DCI
+#define DEBUG_DCI
 
 uint32_t localRIV2alloc_LUT6[32];
 uint32_t distRIV2alloc_even_LUT6[32];

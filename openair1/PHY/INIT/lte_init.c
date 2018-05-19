@@ -1425,9 +1425,9 @@ int phy_init_lte_eNB(PHY_VARS_eNB *eNB,
 
       for (i=0; i<fp->nb_antennas_tx; i++) {
 		// zh add 20170927
-		common_vars->tx_buff[i]=(int32_t*)malloc16(5000*sizeof(int32_t) );
+		common_vars->tx_buff[i]=(int32_t*)malloc16(ZH_TXBUFF_SIZE*sizeof(int32_t) );
 		//zh add 20171025
-		common_vars->tx_dspdata[i]=(int32_t*)malloc16(5000*sizeof(int32_t));
+		common_vars->tx_dspdata[i]=(int32_t*)malloc16(ZH_TXDSP_SIZE*sizeof(int32_t));
         common_vars->txdataF_BF[eNB_id][i] = (int32_t*)malloc16_clear(fp->ofdm_symbol_size*sizeof(int32_t) );
         if (eNB->node_function != NGFI_RCC_IF4p5)
 
@@ -1482,7 +1482,7 @@ int phy_init_lte_eNB(PHY_VARS_eNB *eNB,
           // allocate 2 subframes of I/Q signal data (time) if not an RCC (no time-domain signals)
           common_vars->rxdata[eNB_id][i] = (int32_t*)malloc16_clear( fp->samples_per_tti*10*sizeof(int32_t) );
           //zh add 20171208
-          common_vars->rx_buff[i] = (int32_t*)malloc16_clear( 5000*sizeof(int32_t) );
+          common_vars->rx_buff[i] = (int32_t*)malloc16_clear(ZH_RXBUFF_SIZE*sizeof(int32_t) );
           if (eNB->node_function != NGFI_RRU_IF5)
             // allocate 2 subframes of I/Q signal data (time, 7.5 kHz offset)
             common_vars->rxdata_7_5kHz[eNB_id][i] = (int32_t*)malloc16_clear( 2*fp->samples_per_tti*2*sizeof(int32_t) );

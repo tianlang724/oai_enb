@@ -1099,7 +1099,7 @@ void rx_fh_if5(PHY_VARS_eNB *eNB,int *frame, int *subframe) {
   int siglen=fp->samples_per_tti,flags=1;
   // 20171209 clear rx_buff every subframe
   for(int i=0;i<fp->nb_antenna_ports_eNB;i++){
-		  memset(eNB->common_vars.rx_buff[i],0,sizeof(uint8_t)*5000);
+		  memset(eNB->common_vars.rx_buff[i],0,sizeof(uint8_t)*ZH_RXBUFF_SIZE);
   }
   eNB->ifdevice.trx_read_func(&eNB->ifdevice,null,eNB->common_vars.rx_buff,siglen,fp->nb_antennas_tx);
   
@@ -2303,4 +2303,19 @@ void stop_eNB(int nb_inst) {
     printf("Killing eNB %d processing threads\n",inst);
     kill_eNB_proc(inst);
   }
+  /*
+  LTE_DL_FRAME_PARMS* const fp      = &eNB->frame_parms;
+  LTE_eNB_COMMON* const common_vars = &eNB->common_vars;
+  for (int i=0; i<fp->nb_antennas_tx; i++){
+		free(common_vars->tx_buff[i]);
+		free(common_vars->tx_dspdata[i]);
+  }
+  for (int i=0; i<fp->nb_antennas_rx; i++){
+		free(common_vars->rx_buff[i]);
+  }
+  free(common_vars->tx_buff);
+  free(common_vars->tx_dspdata);
+  free(common_vars->rx_buff);
+*/
+
 }
