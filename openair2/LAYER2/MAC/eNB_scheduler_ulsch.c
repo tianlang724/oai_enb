@@ -138,7 +138,7 @@ void rx_sdu(const module_id_t enb_mod_idP,
     case POWER_HEADROOM:
       if (UE_id != -1) {
         UE_list->UE_template[CC_idP][UE_id].phr_info =  (payload_ptr[0] & 0x3f) - PHR_MAPPING_OFFSET;
-        LOG_D(MAC, "[eNB %d] CC_id %d MAC CE_LCID %d : Received PHR PH = %d (db)\n",
+        LOG_I(MAC, "[eNB %d] CC_id %d MAC CE_LCID %d : Received PHR PH = %d (db)\n",
               enb_mod_idP, CC_idP, rx_ces[i], UE_list->UE_template[CC_idP][UE_id].phr_info);
         UE_list->UE_template[CC_idP][UE_id].phr_info_configured=1;
 	UE_list->UE_sched_ctrl[UE_id].phr_received = 1;
@@ -874,6 +874,7 @@ abort();
 	  }
 
           // new transmission
+		  printf("[schedule_ulsch_rnti]zh round=%d\n",round);
           if (round==0) {
 
             ndi = 1-UE_template->oldNDI_UL[harq_pid];
@@ -891,7 +892,6 @@ abort();
 
             UE_list->eNB_UE_stats[CC_id][UE_id].ulsch_mcs2=mcs;
 	    //            buffer_occupancy = UE_template->ul_total_buffer;
-
             while (((rb_table[rb_table_index]>(frame_parms->N_RB_UL-1-first_rb[CC_id])) ||
 		    (rb_table[rb_table_index]>45)) &&
                    (rb_table_index>0)) {
@@ -899,6 +899,7 @@ abort();
             }
 
             TBS = mac_xface->get_TBS_UL(mcs,rb_table[rb_table_index]);
+           printf("[schedule_ulsch_rnti]zh msc=%d,N_RB_UL=%d,fisrt_rb=%d,TBS=%d,rb_table_index=%d,table_index_pre%d\n",mcs,frame_parms->N_RB_UL,first_rb[CC_id],TBS,rb_table_index,UE_template->pre_allocated_rb_table_index_ul);
 	    UE_list->eNB_UE_stats[CC_id][UE_id].total_rbs_used_rx+=rb_table[rb_table_index];
 	    UE_list->eNB_UE_stats[CC_id][UE_id].ulsch_TBS=TBS;
 	    //            buffer_occupancy -= TBS;

@@ -53,7 +53,7 @@ SET(CMAKE_TARGET_DEFINITIONS
   "OPENAIR_LTE"
   "PACKAGE_BUGREPORT=\"openair4g-devel@lists.eurecom.fr\""
   "PACKAGE_NAME=\"lte-softmodem\""
-  "PACKAGE_VERSION=\"Branch: master Abrev. Hash: caa559e Date: Tue Apr 17 17:13:23 2018 +0800\""
+  "PACKAGE_VERSION=\"Branch: master Abrev. Hash: b51bd26 Date: Sat May 19 12:11:42 2018 +0800\""
   "PC_DSP"
   "PC_TARGET"
   "PDCP_USE_NETLINK"

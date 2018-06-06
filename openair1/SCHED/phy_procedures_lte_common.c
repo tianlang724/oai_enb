@@ -742,6 +742,23 @@ lte_subframe_t subframe_select(LTE_DL_FRAME_PARMS *frame_parms,unsigned char sub
       return(SF_S);
       break;
     }
+   //zh add case 2 20180519
+  case 2:
+	switch(subframe){
+	case 0:
+	case 3:
+    case 4:
+    case 5:
+	case 8:
+	case 9:
+	   return(SF_DL);
+	case 2:
+	case 7:
+	   return (SF_UL);
+    default:
+	   return(SF_S);
+	   break;
+	}
 
   case 3:
     if  ((subframe<1) || (subframe>=5))

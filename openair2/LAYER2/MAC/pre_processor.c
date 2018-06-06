@@ -1334,6 +1334,7 @@ void assign_max_mcs_min_rb(module_id_t module_idP,int frameP, sub_frame_t subfra
       UE_template = &UE_list->UE_template[CC_id][UE_id];
 
       // if this UE has UL traffic
+	  printf("[assign_max_mcs_min_rb]zh ue %d has ul traffic %d\n",UE_id,UE_template->ul_total_buffer);
       if (UE_template->ul_total_buffer > 0 ) {
 
         tbs = mac_xface->get_TBS_UL(mcs,3);  // 1 or 2 PRB with cqi enabled does not work well!
